@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex justify-center items-center">
       <form action={action} className="flex w-1/3 flex-col gap-2 text-black">
+        {/* email */}
         <input
           name="email"
           type="email"
@@ -16,8 +17,16 @@ export default function Home() {
           className="px-4 py-2 rounded-full outline-none ring-0 ring-transparent focus:ring-offset-2 ring-offset-black focus:ring focus:ring-orange-400"
         />
         {state?.errors && (
-          <span className="text-red-500">{state.errors.fieldErrors.email}</span>
+          <div className="flex flex-col">
+            {state.errors.fieldErrors.email?.map((error, index) => (
+              <span key={index} className="text-red-500">
+                {error}
+              </span>
+            ))}
+          </div>
         )}
+
+        {/* username */}
         <input
           name="username"
           type="text"
@@ -25,10 +34,16 @@ export default function Home() {
           className="px-4 py-2 rounded-full outline-none ring-0 ring-transparent focus:ring-offset-2 ring-offset-black focus:ring focus:ring-orange-400"
         />
         {state?.errors && (
-          <span className="text-red-500">
-            {state.errors.fieldErrors.username}
-          </span>
+          <div className="flex flex-col">
+            {state.errors.fieldErrors.username?.map((error, index) => (
+              <span key={index} className="text-red-500">
+                {error}
+              </span>
+            ))}
+          </div>
         )}
+
+        {/* password */}
         <input
           name="password"
           type="password"
@@ -36,9 +51,13 @@ export default function Home() {
           className="px-4 py-2 rounded-full outline-none ring-0 ring-transparent focus:ring-offset-2 ring-offset-black focus:ring focus:ring-orange-400"
         />
         {state?.errors && (
-          <span className="text-red-500">
-            {state.errors.fieldErrors.password}
-          </span>
+          <div className="flex flex-col">
+            {state.errors.fieldErrors.password?.map((error, index) => (
+              <span key={index} className="text-red-500">
+                {error}
+              </span>
+            ))}
+          </div>
         )}
         <Login />
         {state?.success && (
